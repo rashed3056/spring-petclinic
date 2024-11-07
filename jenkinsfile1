@@ -24,9 +24,15 @@ pipeline {
 
         stage('SonarQube Analysis') {
             steps {
-                script {
+                withCredentials([string(credentialsId: 'SONAR_TOKEN', variable: 'SONAR_TOKEN')]) {
                     withSonarQubeEnv('SonarQube') {
-                        sh 'mvn sonar:sonar -Dsonar.projectKey=rashed3056_myspringpetclinic -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN'
+                        sh '''
+                        mvn sonar:sonar \
+                          -Dsonar.projectKey=rashed3056_myspringpetclinic \
+                          -Dsonar.organization=rashed3056 \
+                          -Dsonar.host.url=https://sonarcloud.io \
+                          -Dsonar.login=$SONAR_TOKEN
+                        '''
                     }
                 }
             }
@@ -58,3 +64,4 @@ pipeline {
         }
     }
 }
+
