@@ -5,7 +5,7 @@ pipeline {
         JAVA_HOME = '/usr/lib/jvm/java-17-amazon-corretto'
         MAVEN_HOME = '/usr/share/maven'
         PATH = "${JAVA_HOME}/bin:${MAVEN_HOME}/bin:${env.PATH}"
-        NEXUS_URL = 'http://ec2-3-82-127-128.compute-1.amazonaws.com:8081/repository/maven-releases' // Replace with your Nexus repository URL
+        NEXUS_URL = 'http://ec2-3-82-127-128.compute-1.amazonaws.com:8081/repository/maven-releases/' // Replace with your Nexus repository URL
     }
 
     stages {
