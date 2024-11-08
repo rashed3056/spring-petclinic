@@ -58,7 +58,7 @@ pipeline {
                       -Dpackaging=jar \
                       -Dfile=target/spring-petclinic-3.3.0-SNAPSHOT.jar \
                       -DrepositoryId=nexus \
-                      -Durl=http://ec2-3-82-127-128.compute-1.amazonaws.com:8081/repository/maven-releases/ \
+                      -Durl=http://ec2-3-82-127-128.compute-1.amazonaws.com:8081/repository/MyProjectPetClinic/ \
                       -Dusername=admin \
                       -Dpassword=R@shu3056 \
                       -X
