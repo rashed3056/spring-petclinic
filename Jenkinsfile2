@@ -50,20 +50,21 @@ pipeline {
 
         stage('Deploy to Nexus') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'NEXUS_CREDENTIALS', usernameVariable: 'NEXUS_USER', passwordVariable: 'NEXUS_PASS')]) {
+                        withCredentials([usernamePassword(credentialsId: 'NEXUS_CREDENTIALS', usernameVariable: 'NEXUS_USER', passwordVariable: 'NEXUS_PASS')]) {
                     sh '''
                     mvn deploy:deploy-file \
-                      -DgroupId=com.yourcompany \
-                      -DartifactId=your-artifact \
-                      -Dversion=1.0.0 \
+                      -DgroupId=org.springframework.samples \       // Use the confirmed groupId
+                      -DartifactId=spring-petclinic \               // Use the confirmed artifactId
+                      -Dversion=3.3.0-SNAPSHOT \                    // Use the confirmed version
                       -Dpackaging=jar \
-                      -Dfile=target/your-artifact-1.0.0.jar \
+                      -Dfile=target/spring-petclinic-3.3.0-SNAPSHOT.jar \ // Ensure this matches your actual artifact filename
                       -DrepositoryId=nexus \
                       -Durl=$NEXUS_URL \
                       -Dusername=$NEXUS_USER \
                       -Dpassword=$NEXUS_PASS
                     '''
                 }
+
             }
         }
     }
