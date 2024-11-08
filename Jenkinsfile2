@@ -59,7 +59,7 @@ pipeline {
                       -Dfile=target/spring-petclinic-3.3.0-SNAPSHOT.jar \
                       -DrepositoryId=nexus \
                       -Durl=http://ec2-3-82-127-128.compute-1.amazonaws.com:8081/repository/MyProjectPetClinic/ \
-                      -Dusername=admin \
+                      -Dusername=rashed56 \
                       -Dpassword=R@shu3056 \
                       -X
                     '''
