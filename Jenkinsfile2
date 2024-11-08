@@ -50,13 +50,19 @@ pipeline {
         stage('Deploy to Nexus') {
             steps {
                 script {
-                    // Replace the encoded string with your actual Base64-encoded username:password
-                    def encodedAuth = "Basic dXNlcm5hbWU6cGFzc3dvcmQ="  
-                    sh """
-                    curl -X POST -H "Authorization: ${encodedAuth}" \
-                    --upload-file target/spring-petclinic-3.3.0-SNAPSHOT.jar \
-                    ${NEXUS_URL}org/springframework/samples/spring-petclinic/3.3.0-SNAPSHOT/spring-petclinic-3.3.0-SNAPSHOT.jar
-                    """
+                    sh '''
+                    mvn deploy:deploy-file \
+                      -DgroupId=org.springframework.samples \
+                      -DartifactId=spring-petclinic \
+                      -Dversion=3.3.0-SNAPSHOT \
+                      -Dpackaging=jar \
+                      -Dfile=target/spring-petclinic-3.3.0-SNAPSHOT.jar \
+                      -DrepositoryId=nexus \
+                      -Durl=http://ec2-3-82-127-128.compute-1.amazonaws.com:8081/repository/maven-releases/ \
+                      -Dusername=admin \
+                      -Dpassword=R@shu3056 \
+                      -X
+                    '''
                 }
             }
         }
@@ -64,11 +70,11 @@ pipeline {
 
     post {
         success {
-            echo 'Build and deployment to Nexus successful!'
+            echo 'Build and Tests successful!'
         }
 
         failure {
-            echo 'Build or deployment failed!'
+            echo 'Build or Tests failed!'
         }
     }
 }
