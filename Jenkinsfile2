@@ -5,8 +5,7 @@ pipeline {
         JAVA_HOME = '/usr/lib/jvm/java-17-amazon-corretto'
         MAVEN_HOME = '/usr/share/maven'
         PATH = "${JAVA_HOME}/bin:${MAVEN_HOME}/bin:${env.PATH}"
-        NEXUS_URL = 'http://ec2-3-82-127-128.compute-1.amazonaws.com:8081/#admin/repository/repositories:maven-releases' // Replace with your Nexus repository URL
-      
+        NEXUS_URL = 'http://ec2-3-82-127-128.compute-1.amazonaws.com:8081/repository/maven-releases' // Replace with your Nexus repository URL
     }
 
     stages {
@@ -53,18 +52,17 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'NEXUS_CREDENTIALS', usernameVariable: 'NEXUS_USER', passwordVariable: 'NEXUS_PASS')]) {
                     sh '''
                     mvn deploy:deploy-file \
-                      -DgroupId=org.springframework.samples \       // Use the confirmed groupId
-                      -DartifactId=spring-petclinic \               // Use the confirmed artifactId
-                      -Dversion=3.3.0-SNAPSHOT \                    // Use the confirmed version
+                      -DgroupId=org.springframework.samples \
+                      -DartifactId=spring-petclinic \
+                      -Dversion=3.3.0-SNAPSHOT \
                       -Dpackaging=jar \
-                      -Dfile=target/spring-petclinic-3.3.0-SNAPSHOT.jar \ // Ensure this matches your actual artifact filename
+                      -Dfile=target/spring-petclinic-3.3.0-SNAPSHOT.jar \
                       -DrepositoryId=nexus \
                       -Durl=$NEXUS_URL \
                       -Dusername=$NEXUS_USER \
                       -Dpassword=$NEXUS_PASS
                     '''
                 }
-
             }
         }
     }
