@@ -141,6 +141,26 @@
     </dependency>
 
   </dependencies>
+  <build>
+    <plugins>
+        <!-- Checkstyle Plugin -->
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-checkstyle-plugin</artifactId>
+            <version>3.1.0</version> <!-- Use the appropriate version -->
+            <executions>
+                <execution>
+                    <goals>
+                        <goal>check</goal>
+                    </goals>
+                </execution>
+            </executions>
+            <configuration>
+                <configLocation>src/checkstyle/nohttp-checkstyle.xml</configLocation> <!-- Path to your checkstyle config -->
+            </configuration>
+        </plugin>
+    </plugins>
+  </build>
 
   <build>
     <plugins>
