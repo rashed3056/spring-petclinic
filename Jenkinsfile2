@@ -5,7 +5,7 @@ pipeline {
         JAVA_HOME = '/usr/lib/jvm/java-17-amazon-corretto'
         MAVEN_HOME = '/usr/share/maven'
         PATH = "${JAVA_HOME}/bin:${MAVEN_HOME}/bin:${env.PATH}"
-        NEXUS_URL = 'http://ec2-3-82-127-128.compute-1.amazonaws.com:8081/repository/MyProjectPetClinic//' // Replace with your Nexus repository URL
+        NEXUS_URL = 'http://ec2-54-147-213-111.compute-1.amazonaws.com:8081/repository/maven-releases/' // Replace with your Nexus repository URL
     }
 
     stages {
@@ -58,8 +58,8 @@ pipeline {
                       -Dpackaging=jar \
                       -Dfile=target/spring-petclinic-3.3.0-SNAPSHOT.jar \
                       -DrepositoryId=nexus \
-                      -Durl=http://ec2-3-82-127-128.compute-1.amazonaws.com:8081/repository/MyProjectPetClinic/ \
-                      -Dusername=rashed56 \
+                      -Durl=http://ec2-54-147-213-111.compute-1.amazonaws.com:8081/repository/maven-releases/ \
+                      -Dusername=admin \
                       -Dpassword=R@shu3056 \
                       -X
                     '''
