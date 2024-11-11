@@ -17,10 +17,8 @@ pipeline {
 
         stage('Build') {
             steps {
-                withMaven(mavenSettingsConfig: 'MavenSettings') {
-                    script {
-                        sh 'mvn clean install'
-                    }
+                script {
+                    sh 'mvn clean install'
                 }
             }
         }
@@ -51,20 +49,22 @@ pipeline {
 
         stage('Deploy to Nexus') {
             steps {
-                script {
-                    sh '''
-                    mvn deploy:deploy-file \
-                      -DgroupId=org.springframework.samples \
-                      -DartifactId=spring-petclinic \
-                      -Dversion=3.3.0-SNAPSHOT \
-                      -Dpackaging=jar \
-                      -Dfile=target/spring-petclinic-3.3.0-SNAPSHOT.jar \
-                      -DrepositoryId=nexus \
-                      -Durl=http://ec2-54-147-213-111.compute-1.amazonaws.com:8081/repository/maven-snapshots/ \
-                      -Dusername=admin \
-                      -Dpassword=R@shu3056 \
-                      -X
-                    '''
+                withCredentials([usernamePassword(credentialsId: 'nexus-credentials', usernameVariable: 'NEXUS_USER', passwordVariable: 'NEXUS_PASS')]) {
+                    script {
+                        sh '''
+                        mvn deploy:deploy-file \
+                          -DgroupId=org.springframework.samples \
+                          -DartifactId=spring-petclinic \
+                          -Dversion=3.3.0-SNAPSHOT \
+                          -Dpackaging=jar \
+                          -Dfile=target/spring-petclinic-3.3.0-SNAPSHOT.jar \
+                          -DrepositoryId=nexus \
+                          -Durl=http://ec2-54-147-213-111.compute-1.amazonaws.com:8081/repository/maven-snapshots/ \
+                          -Dusername=$NEXUS_USER \
+                          -Dpassword=$NEXUS_PASS \
+                          -X
+                        '''
+                    }
                 }
             }
         }
