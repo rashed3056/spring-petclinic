@@ -17,10 +17,9 @@ pipeline {
 
         stage('Build') {
             steps {
-                withMaven(mavenSettingsConfig: 'MavenSettings') {
+                withMaven(mavenSettingsConfig: 'MavenSettings'
                     script {
-                        sh 'mvn clean install'
-                    }
+                            sh 'mvn clean install'
                 }
             }
         }
@@ -58,7 +57,7 @@ pipeline {
                       -DartifactId=spring-petclinic \
                       -Dversion=3.3.0-SNAPSHOT \
                       -Dpackaging=jar \
-                      -Dfile=target/spring-petclinic-3.3.0-SNAPSHOT.jar \
+                      -Dfile=spring-petclinic-3.3.0-SNAPSHOT.jar \
                       -DrepositoryId=nexus \
                       -Durl=http://ec2-54-147-213-111.compute-1.amazonaws.com:8081/repository/maven-snapshots/ \
                       -Dusername=admin \
