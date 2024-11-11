@@ -10,8 +10,8 @@
   </parent>
 
   <groupId>org.springframework.samples</groupId>
-  <version>3.3.0-SNAPSHOT</version>
   <artifactId>spring-petclinic</artifactId>
+  <version>3.3.0-SNAPSHOT</version>
 
   <name>petclinic</name>
 
@@ -141,8 +141,7 @@
     </dependency>
 
   </dependencies>
-  
-  
+
   <build>
     <plugins>
       <plugin>
@@ -166,23 +165,6 @@
           </execution>
         </executions>
       </plugin>
-      <!-- Checkstyle Plugin -->
-      <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-checkstyle-plugin</artifactId>
-          <version>3.1.0</version> <!-- Use the appropriate version -->
-          <executions>
-              <execution>
-                  <goals>
-                      <goal>check</goal>
-                  </goals>
-              </execution>
-          </executions>
-          <configuration>
-              <configLocation>src/checkstyle/nohttp-checkstyle.xml</configLocation> <!-- Path to your checkstyle config -->
-          </configuration>
-      </plugin>
-
       <plugin>
         <groupId>io.spring.javaformat</groupId>
         <artifactId>spring-javaformat-maven-plugin</artifactId>
