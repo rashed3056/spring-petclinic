@@ -142,21 +142,29 @@
 
 <!--     //Test dep for serenety  -->
 
+    
+    <!-- Core Serenity dependency -->
     <dependency>
         <groupId>net.serenity-bdd</groupId>
         <artifactId>serenity-core</artifactId>
-        <version>3.8.0</version> <!-- Use the latest version available -->
+        <version>3.8.0</version> <!-- Update to the latest stable version if available -->
     </dependency>
+
+    <!-- Serenity JUnit integration -->
     <dependency>
         <groupId>net.serenity-bdd</groupId>
         <artifactId>serenity-junit</artifactId>
         <version>3.8.0</version>
     </dependency>
+
+    <!-- Serenity Cucumber integration -->
     <dependency>
         <groupId>net.serenity-bdd</groupId>
-        <artifactId>serenity-cucumber6</artifactId> <!-- or serenity-cucumber5 if using Cucumber 5 -->
+        <artifactId>serenity-cucumber6</artifactId> <!-- Use serenity-cucumber6 for Cucumber 6 -->
         <version>3.8.0</version>
     </dependency>
+
+
 
 
   </dependencies>
