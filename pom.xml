@@ -145,17 +145,17 @@
     <dependency>
         <groupId>net.serenity-bdd</groupId>
         <artifactId>serenity-core</artifactId>
-        <version>3.9.0</version> <!-- Use the latest version available -->
+        <version>3.8.0</version> <!-- Use the latest version available -->
     </dependency>
     <dependency>
         <groupId>net.serenity-bdd</groupId>
         <artifactId>serenity-junit</artifactId>
-        <version>3.9.0</version>
+        <version>3.8.0</version>
     </dependency>
     <dependency>
         <groupId>net.serenity-bdd</groupId>
         <artifactId>serenity-cucumber6</artifactId> <!-- or serenity-cucumber5 if using Cucumber 5 -->
-        <version>3.9.0</version>
+        <version>3.8.0</version>
     </dependency>
 
 
