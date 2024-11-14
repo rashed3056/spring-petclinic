@@ -333,6 +333,17 @@
       <name>Spring Milestones</name>
       <url>https://repo.spring.io/milestone</url>
     </repository>
+<!-- Maven repo for serenity -->
+    <repository>
+        <id>central</id>
+        <url>https://repo.maven.apache.org/maven2</url>
+    </repository>
+
+    <repository>
+        <id>serenity-snapshots</id>
+        <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+    </repository>
+
   </repositories>
   <pluginRepositories>
     <pluginRepository>
